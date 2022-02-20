@@ -1,0 +1,128 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["import", "@typescript-eslint", "simple-import-sort"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/next/**",
+            "group": "external",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@mui/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@views/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@components/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@hooks/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@provider/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@interfaces/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@utils/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@shared/**",
+            "group": "internal",
+            "position": "before"
+          },
+
+          {
+            "pattern": "**/@config/**",
+            "group": "internal",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src", "dist"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "ignorePatterns": [".eslintrc.json"]
+}
