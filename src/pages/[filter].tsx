@@ -1,16 +1,15 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
+import { GetStaticProps, InferGetServerSidePropsType } from 'next';
 import { useInfiniteQuery } from 'react-query';
 
 import { Homepage } from '@views/home-page';
 
 import { moviesAPI } from '@services/index';
 
-const MovieFilterPage = () => {
-  const router = useRouter();
-  const id = router.query.filter;
-
+const MovieFilterPage = ({
+  id,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const result = useInfiniteQuery(
     ['movie-filter', id],
     async ({ pageParam = 1 }) => {
@@ -48,6 +47,16 @@ const MovieFilterPage = () => {
       <Homepage result={result} />;
     </>
   );
+};
+
+export const getServerSideProps: GetStaticProps = async (context) => {
+  const id = context.params?.filter;
+
+  return {
+    props: {
+      id,
+    },
+  };
 };
 
 export default MovieFilterPage;

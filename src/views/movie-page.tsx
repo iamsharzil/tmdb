@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import { useQuery } from 'react-query';
 
@@ -16,15 +15,13 @@ import { Movie, MovieCredits } from '@interfaces/index';
 
 import { moviesAPI } from '@services/index';
 
-export const MovieView = () => {
-  const router = useRouter();
-
-  const movieInfoQuery = useQuery(`movie-${router.query.id}`, () =>
-    moviesAPI.getMovieById(router.query.id)
+export const MovieView = ({ id }: { id: string | string[] | undefined }) => {
+  const movieInfoQuery = useQuery(`movie-${id}`, () =>
+    moviesAPI.getMovieById(id)
   );
 
-  const movieCreditsQuery = useQuery(`movie-credits-${router.query.id}`, () =>
-    moviesAPI.getMovieCreditsById(router.query.id)
+  const movieCreditsQuery = useQuery(`movie-credits-${id}`, () =>
+    moviesAPI.getMovieCreditsById(id)
   );
 
   const loading = movieInfoQuery.isLoading || movieCreditsQuery.isLoading;
