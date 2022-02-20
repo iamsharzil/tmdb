@@ -42,7 +42,7 @@ export type Movie = {
   vote_average: number;
 };
 
-export type CardView = Pick<Movie, 'id' | 'title' | 'overview'> & {
+export type CardView = Partial<Pick<Movie, 'id' | 'title' | 'overview'>> & {
   subtitle: string;
   image: string;
   progress?: number | null;
