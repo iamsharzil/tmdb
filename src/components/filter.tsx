@@ -2,8 +2,13 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/router';
 
-import { Button, FormControlLabel, Radio, RadioGroup } from '@mui/material';
-import { Box } from '@mui/system';
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from '@mui/material';
 
 export const MovieFilters = () => {
   const router = useRouter();
@@ -40,10 +45,14 @@ export const MovieFilters = () => {
           label="Top Rated"
         />
       </RadioGroup>
-      <Box mt={2} />
-      <Button fullWidth variant="contained" onClick={handleClick}>
-        Clear
-      </Button>
+      {router.query.filter && (
+        <>
+          <Box mt={2} />
+          <Button fullWidth variant="contained" onClick={handleClick}>
+            Clear
+          </Button>
+        </>
+      )}
     </>
   );
 };

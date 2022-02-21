@@ -13,6 +13,7 @@ export const Card: (data: CardView) => JSX.Element = ({
   subtitle,
   progress,
   image,
+  blurDataUrl,
   width,
   height,
   overview,
@@ -23,7 +24,14 @@ export const Card: (data: CardView) => JSX.Element = ({
   return (
     <>
       <Box position={'relative'} minHeight={height} minWidth={width}>
-        <Image src={image} alt={title} layout="fill" objectFit="cover" />
+        <Image
+          src={image}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          blurDataURL={blurDataUrl}
+          placeholder="blur"
+        />
         {!isMobile && progress && (
           <Box
             width={40}

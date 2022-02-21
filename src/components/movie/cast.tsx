@@ -38,6 +38,9 @@ export const CastInfo = ({ cast }: { cast: Cast[] }) => {
       >
         {cast.map((cast) => {
           const image = `https://image.tmdb.org/t/p/w500/${cast.profile_path}`;
+          const blurDataUrl = `https://image.tmdb.org/t/p/w92/${cast.profile_path}`;
+          const placeHolder = `https://via.placeholder.com/250*250`;
+
           return (
             <Box
               key={cast.id}
@@ -49,9 +52,10 @@ export const CastInfo = ({ cast }: { cast: Cast[] }) => {
               minWidth={150}
             >
               <Card
+                blurDataUrl={cast.profile_path ? blurDataUrl : placeHolder}
                 title={cast.name}
                 subtitle={cast.character}
-                image={image}
+                image={image ?? placeHolder}
                 id={cast.id}
                 progress={null}
                 width={[120, 150]}

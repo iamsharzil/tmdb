@@ -81,6 +81,8 @@ export const MovieInfo = ({
               src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               objectFit={isMobile || isTablet ? 'contain' : 'cover'}
               layout="fill"
+              blurDataURL={`https://image.tmdb.org/t/p/w92/${poster_path}`}
+              placeholder="blur"
             />
           </Box>
 
@@ -95,7 +97,7 @@ export const MovieInfo = ({
                 {title}
               </Typography>
               <Typography component={'span'} variant="h4" fontWeight="400">
-                (1995)
+                ({dayjs(release_date).format('YYYY')})
               </Typography>
             </Stack>
 

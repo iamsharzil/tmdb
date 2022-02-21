@@ -64,6 +64,8 @@ export const Homepage = ({
       {page.data.results.map((movie: Movie) => {
         const subtitle = dayjs(movie.release_date).format('MMM DD, YYYY');
         const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        const blurDataUrl = `https://image.tmdb.org/t/p/w92/${movie.poster_path}`;
+        const placeHolder = `https://via.placeholder.com/250*250`;
 
         return (
           <Link
@@ -91,6 +93,7 @@ export const Homepage = ({
                   title={movie.title}
                   subtitle={subtitle}
                   image={imageUrl}
+                  blurDataUrl={movie.poster_path ? blurDataUrl : placeHolder}
                   progress={movie.vote_average * 10}
                   overview={movie.overview}
                   width={[100, 220]}

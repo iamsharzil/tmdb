@@ -45,6 +45,7 @@ export type Movie = {
 export type CardView = Partial<Pick<Movie, 'id' | 'title' | 'overview'>> & {
   subtitle: string;
   image: string;
+  blurDataUrl: string;
   progress?: number | null;
   width?: number[] | number;
   height?: number[] | number;
